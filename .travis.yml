@@ -10,15 +10,15 @@ scripts:
   - docker run lexyblazy/react-test npm run test:ci
 
 after_success:
-  - docker build -t lexyblazy/multi-client:latest ./client
-  - docker build -t lexyblazy/multi-nginx:latest ./nginx
-  - docker build -t lexyblazy/multi-server:latest ./server
-  - docker build -t lexyblazy/multi-worker:latest ./worker
+  - docker build -t lexyblazy/multi-client ./client
+  - docker build -t lexyblazy/multi-nginx ./nginx
+  - docker build -t lexyblazy/multi-server ./server
+  - docker build -t lexyblazy/multi-worker ./worker
 
   # login to dockerhub
   - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
   # push images to dockerhub
-  - docker push lexyblazy/multi-client:latest
-  - docker push lexyblazy/multi-nginx:latest
-  - docker push lexyblazy/multi-server:latest
-  - docker push lexyblazy/multi-worker:latest
+  - docker push lexyblazy/multi-client
+  - docker push lexyblazy/multi-nginx
+  - docker push lexyblazy/multi-server
+  - docker push lexyblazy/multi-worker
