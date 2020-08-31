@@ -4,8 +4,8 @@ services:
     image: "postgres:latest"
   redis:
     image: "redis:latest"
-  :
-   api build:
+  api: 
+   build:
       dockerfile: Dockerfile.dev
       context: ./server
     volumes:
