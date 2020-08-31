@@ -1,0 +1,37 @@
+{
+  "AWSEBDockerrunVersion": 2,
+
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "essential": false,
+      "image": "lexyblazy/multi-client",
+      "hostname": "client"
+    },
+    {
+      "name": "server",
+      "essential": false,
+      "image": "lexyblazy/multi-server",
+      "hostname": "api"
+    },
+    {
+      "name": "worker",
+      "essential": false,
+      "image": "lexyblazy/multi-worker",
+      "hostname": "worker"
+    },
+    {
+      "name": "nginx",
+      "essential": true,
+      "image": "lexyblazy/multi-client",
+      "hostname": "nginx",
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]
+    }
+  ]
+}
